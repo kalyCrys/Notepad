@@ -28,19 +28,23 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: ListTile(
-              title: Text("title"),
-              subtitle: Text("Description"),
-              shape: Border(
-                  bottom: BorderSide(
-                color: Colors.black12,
-              )),
-              trailing: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
-                  IconButton(onPressed: () {}, icon: Icon(Icons.delete))
-                ],
+            child: IconButton(
+              onPressed: (){},
+              autofocus: ,
+              icon: ListTile(
+                title: Text("title"),
+                subtitle: Text("Description"),
+                shape: Border(
+                    bottom: BorderSide(
+                  color: Colors.black12,
+                )),
+                trailing: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+                    IconButton(onPressed: () {}, icon: Icon(Icons.delete))
+                  ],
+                ),
               ),
             ),
           )
