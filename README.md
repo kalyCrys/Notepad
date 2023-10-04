@@ -1,6 +1,7 @@
 # notepad
 
-A new Flutter project.
+Este é um projeto de estudo que possui como objetivo aprender mais sobre o dart e o flutter.
+O notepad é um simples bloco de notas onde o usuário pode adicionar, excluir e editar suas anotações
 
 ## Getting Started
 
