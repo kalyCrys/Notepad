@@ -24,24 +24,36 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [],
       ),
-      body: Column(children: [
-        Padding(
-          padding: const EdgeInsets.all(15),
-          child: Card(
-            color: Colors.grey[200],
-            child: Container(
-              height: 100,
-                child: Column(
-              //crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(mainAxisAlignment: MainAxisAlignment.spaceAround ,children: [Text("title"), Text("Date")],),
-                Row(children: [Text("Description")],),
-               
-              ],
-            )),
-          ),
-        )
-      ]),
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ListTile(
+              title: Text("title"),
+              subtitle: Text("Description"),
+              shape: Border(
+                  bottom: BorderSide(
+                color: Colors.black12,
+              )),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+                  IconButton(onPressed: () {}, icon: Icon(Icons.delete))
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue[600],
+        onPressed: () {},
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }
