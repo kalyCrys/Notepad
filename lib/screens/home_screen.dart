@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notepad/screens/addNote_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.all(10.0),
             child: IconButton(
               onPressed: (){},
-              autofocus: ,
+              // autofocus: ,
               icon: ListTile(
                 title: Text("title"),
                 subtitle: Text("Description"),
@@ -52,7 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue[600],
-        onPressed: () {},
+        onPressed: () => Navigator.push(context, 
+        MaterialPageRoute(builder: (context) => AddNote())),
         child: Icon(
           Icons.add,
           color: Colors.white,
