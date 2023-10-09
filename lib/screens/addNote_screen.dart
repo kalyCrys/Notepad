@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:notepad/screens/home_screen.dart';
+import 'package:intl/intl.dart';
 
 class AddNote extends StatefulWidget {
-  const AddNote({super.key});
-
+   const AddNote({super.key});
+   
   @override
   State<AddNote> createState() => _AddNoteState();
 }
@@ -32,13 +33,12 @@ class _AddNoteState extends State<AddNote> {
               ),
             ),
             Row(
-              children: [Text("data")],
+              children: [Text(DateFormat("dd/MM/yyyy   HH:mm").format(DateTime.now()), style: TextStyle(fontWeight: FontWeight.normal, color: Colors.black38),)],
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Scrollbar(
                 controller: _scrollController,
-                // isAlwaysShown: true,
                 child: TextField(
                   scrollController: _scrollController,
                   autofocus: true,
