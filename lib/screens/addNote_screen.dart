@@ -8,24 +8,46 @@ class AddNote extends StatefulWidget {
   State<AddNote> createState() => _AddNoteState();
 }
 
+TextEditingController _editTextController = TextEditingController();
+ScrollController _scrollController = ScrollController();
+
 class _AddNoteState extends State<AddNote> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.amber[50],
       appBar: AppBar(
-          
+        backgroundColor: Colors.amber[100],
       ),
-      
       body: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 5),
         child: Column(
           children: [
             TextField(
               decoration: InputDecoration(
-                border: UnderlineInputBorder(),
-                hintText: 'Title',
-                
+                border: InputBorder.none,
+                hintText: 'Título',
+                hintStyle:
+                    TextStyle(fontSize: 24, fontWeight: FontWeight.normal),
+              ),
+            ),
+            Row(
+              children: [Text("data")],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Scrollbar(
+                controller: _scrollController,
+                // isAlwaysShown: true,
+                child: TextField(
+                  scrollController: _scrollController,
+                  autofocus: true,
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 10,
+                  onChanged: (s) => {},
+                  decoration: InputDecoration(
+                      border: InputBorder.none, hintText: "Descrição"),
+                ),
               ),
             ),
           ],
