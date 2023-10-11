@@ -9,6 +9,28 @@ class AddNote extends StatefulWidget {
   State<AddNote> createState() => _AddNoteState();
 }
 
+showAlertdialog(BuildContext context){
+  Widget cancelarButton = ElevatedButton(onPressed: (){
+    Navigator.of(context).pop();
+  }, child: Text("Cancelar"));
+  Widget continuarButton = ElevatedButton(onPressed: (){
+    Navigator.of(context).pop();
+    Navigator.of(context).pop();
+  }, child: Text("Continuar"));
+
+  AlertDialog alert = AlertDialog(
+    title: Text("Atenção"),
+    content: Text("Sua anotação não será salva, deseja continuar ?"),
+    actions: [
+      cancelarButton,
+      continuarButton
+    ],
+  );
+  showDialog(context: context, builder:(context){
+    return alert;
+  });
+}
+
 TextEditingController _editTextController = TextEditingController();
 ScrollController _scrollController = ScrollController();
 
@@ -17,8 +39,13 @@ class _AddNoteState extends State<AddNote> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.amber[50],
-      appBar: AppBar(
-        backgroundColor: Colors.amber[100],
+      appBar: 
+      AppBar(
+        backgroundColor: Colors.amber[600],
+        leading: IconButton(onPressed:() =>showAlertdialog(context), icon: Icon(Icons.arrow_back_ios) ),
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.check_outlined)),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 5),
@@ -29,7 +56,7 @@ class _AddNoteState extends State<AddNote> {
                 border: InputBorder.none,
                 hintText: 'Título',
                 hintStyle:
-                    TextStyle(fontSize: 24, fontWeight: FontWeight.normal),
+                    TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
               ),
             ),
             Row(
@@ -56,3 +83,4 @@ class _AddNoteState extends State<AddNote> {
     );
   }
 }
+
