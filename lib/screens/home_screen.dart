@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notepad/database/database_service.dart';
 import 'package:notepad/screens/addNote_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,6 +10,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  DatabaseService db = DatabaseService(); 
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    db.open();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
