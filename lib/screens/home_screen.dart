@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notepad/database/database_service.dart';
 import 'package:notepad/screens/addNote_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,12 +10,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  DatabaseService db = DatabaseService(); 
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    db.open();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.amber[50],
       appBar: AppBar(
         elevation: 1,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.amber[600],
         title: Text(
           'Notepad',
           style: TextStyle(
@@ -29,11 +40,14 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: IconButton(
-              onPressed: (){},
-              // autofocus: ,
-              icon: ListTile(
-                title: Text("title"),
+            child: Card(
+              
+              clipBehavior: Clip.antiAlias,
+              child: ListTile(
+                tileColor: Colors.amber.shade100,
+                title: Text(
+                  "Title",
+                ),
                 subtitle: Text("Description"),
                 shape: Border(
                     bottom: BorderSide(
@@ -43,7 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
-                    IconButton(onPressed: () {}, icon: Icon(Icons.delete))
                   ],
                 ),
               ),
@@ -52,9 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue[600],
-        onPressed: () => Navigator.push(context, 
-        MaterialPageRoute(builder: (context) => AddNote())),
+        backgroundColor: Colors.black,
+        onPressed: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => AddNote())),
         child: Icon(
           Icons.add,
           color: Colors.white,
